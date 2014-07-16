@@ -197,6 +197,9 @@ au FileType go au BufWritePre <buffer> Fmt
     " go 自动补全
     Plugin 'ervandew/supertab'
 
+    " 在文件中搜索
+    Plugin 'mileszs/ack.vim'
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -231,11 +234,16 @@ au FileType go au BufWritePre <buffer> Fmt
     " 显示时间
     let g:airline_section_b = '%{strftime("%y-%m-%d %H:%M:%S")}'
 
+" tagbar 在左侧显示
+    let g:tagbar_left = 1
 
 
 
-"打开/关闭 树状文件目录  
-map <F3> :NERDTreeToggle<CR>  
+" 文件树
+    "打开/关闭 树状文件目录  
+    map <F3> :NERDTreeToggle<CR>  
+    " 右侧显示文件树
+    let NERDTreeWinPos="right"
 
 "nmap <F5> :Tlist<CR>
 nmap <F5> :TagbarToggle<CR>
