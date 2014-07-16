@@ -102,7 +102,10 @@ autocmd BufNewFile *.sh,*.pl,*.py exec ":call SetTitle()"
 " go 程序自动使用 go fmt 格式化
 au FileType go au BufWritePre <buffer> Fmt
 
-" plugin
+" 粘贴时不替换剪切板内容
+    xnoremap p pgvy
+
+" plugin 管理
 " ==============================================================================
     " plugin
     set nocompatible              " be iMproved, required
@@ -200,6 +203,9 @@ au FileType go au BufWritePre <buffer> Fmt
     " 在文件中搜索
     Plugin 'mileszs/ack.vim'
 
+    " 变量多出选择修改
+    Plugin 'terryma/vim-multiple-cursors'
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -268,7 +274,6 @@ highlight SignColumn ctermbg=237
 
 " supertab 自动补全的按键绑定
  let g:SuperTabDefaultCompletionType = "<c-n>"
-
 
 
 " functions
