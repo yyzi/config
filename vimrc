@@ -206,6 +206,9 @@ au FileType go au BufWritePre <buffer> Fmt
     " 变量多出选择修改
     Plugin 'terryma/vim-multiple-cursors'
 
+    " 文件路径自动提示
+    Plugin 'kien/ctrlp.vim'
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -274,6 +277,10 @@ highlight SignColumn ctermbg=237
 
 " supertab 自动补全的按键绑定
  let g:SuperTabDefaultCompletionType = "<c-n>"
+
+
+" 激活 Ctrl 查找文件的功能
+    map ff :CtrlP<CR>  
 
 
 " functions
