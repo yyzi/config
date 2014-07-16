@@ -99,111 +99,167 @@ set paste
 
 autocmd BufNewFile *.sh,*.pl,*.py exec ":call SetTitle()"
 
+" go 程序自动使用 go fmt 格式化
+au FileType go au BufWritePre <buffer> Fmt
 
 " plugin
 " ==============================================================================
-" plugin
-set nocompatible              " be iMproved, required
-filetype off                  " required
+    " plugin
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " alternatively, pass a path where Vundle should install plugins
+    "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+    " let Vundle manage Vundle, required
+    Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
+    " The following are examples of different formats supported.
+    " Keep Plugin commands between vundle#begin/end.
+    " plugin on GitHub repo
+    Plugin 'tpope/vim-fugitive'
+    " plugin from http://vim-scripts.org/vim/scripts.html
+    Plugin 'L9'
+    " Git plugin not hosted on GitHub
+    Plugin 'git://git.wincent.com/command-t.git'
+    " git repos on your local machine (i.e. when working on your own plugin)
+    " Plugin 'file:///home/gmarik/path/to/plugin'
+    " The sparkup vim script is in a subdirectory of this repo called vim.
+    " Pass the path to set the runtimepath properly.
+    Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+    " Avoid a name conflict with L9
+    " Plugin 'user/L9', {'name': 'newL9'}
 
-" markdown
-Plugin 'tpope/vim-markdown'
+    " markdown
+    Plugin 'tpope/vim-markdown'
 
-" golang
-Plugin 'jnwhiteh/vim-golang'
+    " golang
+    Plugin 'jnwhiteh/vim-golang'
 
-" js
-"Plugin 'pangloss/vim-javascript'
-Plugin 'lukaszb/vim-web-indent'
+    " js
+    "Plugin 'pangloss/vim-javascript'
+    Plugin 'lukaszb/vim-web-indent'
 
-"nodejs
-Plugin 'ahayman/vim-nodejs-complete'
+    "nodejs
+    Plugin 'ahayman/vim-nodejs-complete'
 
-"css
-"Plugin 'hail2u/vim-css3-syntax'
+    "css
+    "Plugin 'hail2u/vim-css3-syntax'
 
-" python
-Plugin 'klen/python-mode'
+    " python
+    Plugin 'klen/python-mode'
 
-" pydoc
-"Plugin 'fs111/pydoc.vim'
+    " pydoc
+    "Plugin 'fs111/pydoc.vim'
 
-"perl
-Plugin 'vim-perl/vim-perl'
+    "perl
+    Plugin 'vim-perl/vim-perl'
 
-"shell
-Plugin 'Shougo/vimshell.vim'
+    "shell
+    Plugin 'Shougo/vimshell.vim'
 
-"php
-"Plugin 'StanAngeloff/php.vim'
+    "php
+    "Plugin 'StanAngeloff/php.vim'
 
-"html
-Plugin 'othree/html5.vim'
+    "html
+    Plugin 'othree/html5.vim'
 
-"json
-Plugin 'elzr/vim-json'
+    "json
+    Plugin 'elzr/vim-json'
 
-"yaml
-Plugin 'avakhov/vim-yaml'
+    "yaml
+    Plugin 'avakhov/vim-yaml'
 
-"wordpress
-"Plugin 'dsawardekar/wordpress.vim'
+    "wordpress
+    "Plugin 'dsawardekar/wordpress.vim'
 
-" taglist
-Plugin 'taglist.vim'
+    " taglist
+    Plugin 'taglist.vim'
 
-" A tree explorer plugin for vim.
-Plugin 'scrooloose/nerdtree'
+    " A tree explorer plugin for vim.
+    Plugin 'scrooloose/nerdtree'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+    " tagbar  侧边栏
+    Plugin 'majutsushi/tagbar'
+
+    " vim-airline  只能状态栏
+    Plugin 'bling/vim-airline'
+
+    " 智能注释
+    Plugin 'tpope/vim-commentary'
+
+    " git diff
+    Plugin 'airblade/vim-gitgutter'
+
+    " go 自动补全
+    Plugin 'ervandew/supertab'
+
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " Brief help
+    " :PluginList          - list configured plugins
+    " :PluginInstall(!)    - install (update) plugins
+    " :PluginSearch(!) foo - search (or refresh cache first) for foo
+    " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+    "
+    " see :h vundle for more details or wiki for FAQ
+    " Put your non-Plugin stuff after this line
 
 
 
 " plugin setting
 " =====================================================================================
 
+" vim-airline 配置
+    " 默认显示状态栏
+    set laststatus=2
+    " 开启tabline
+    let g:airline#extensions#tabline#enabled = 1
+    " tabline中当前buffer两端的分隔字符
+    let g:airline#extensions#tabline#left_sep = ' '
+    " tabline中未激活buffer两端的分隔字符
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    " tabline中buffer显示编号
+    "let g:airline#extensions#tabline#buffer_nr_show = 1
+    " 显示时间
+    let g:airline_section_b = '%{strftime("%y-%m-%d %H:%M:%S")}'
+
+
+
+
 "打开/关闭 树状文件目录  
 map <F3> :NERDTreeToggle<CR>  
 
-nmap <F8> :Tlist<CR>
+"nmap <F5> :Tlist<CR>
+nmap <F5> :TagbarToggle<CR>
+
+" 显示 git diff
+nmap <F8> :GitGutterToggle<CR>
+
+" 默认不显示 git diff 当按 f8 以后才显示 diff 并且变更行高亮
+let g:gitgutter_enabled = 0
+let g:gitgutter_highlight_lines = 1
+
+
+" git diff 左侧侧边栏背景色
+highlight SignColumn ctermbg=237
+
+" git diff change 行高亮
+    highlight GitGutterAddLine      ctermbg=240 ctermfg=2
+    highlight GitGutterDeleteLine   ctermbg=240 ctermfg=198
+    highlight GitGutterChangeLine   ctermbg=240 ctermfg=11
+    let g:gitgutter_eager=1
+    let g:gitgutter_realtime=1
+
+" supertab 自动补全的按键绑定
+ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
 
@@ -234,3 +290,33 @@ func SetTitle()
                 :8
         endif
 endfunc
+
+
+" gotags 
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
