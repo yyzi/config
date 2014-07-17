@@ -105,6 +105,18 @@ au FileType go au BufWritePre <buffer> Fmt
 " 粘贴时不替换剪切板内容
     xnoremap p pgvy
 
+" 设置缩进显示
+ " 显示tab和空格
+ set list
+ " 设置tab和空格样式
+ set lcs=tab:\¦\ ,nbsp:.,trail:.
+ " 设定行首tab为灰色
+ highlight LeaderTab ctermfg=darkgrey
+ " 匹配行首tab
+ match LeaderTab /\t/
+
+
+
 " plugin 管理
 " ==============================================================================
     " plugin
@@ -209,6 +221,8 @@ au FileType go au BufWritePre <buffer> Fmt
     " 文件路径自动提示
     Plugin 'kien/ctrlp.vim'
 
+
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -277,10 +291,6 @@ highlight SignColumn ctermbg=237
 
 " supertab 自动补全的按键绑定
  let g:SuperTabDefaultCompletionType = "<c-n>"
-
-
-" 激活 Ctrl 查找文件的功能
-    map ff :CtrlP<CR>  
 
 
 " functions
