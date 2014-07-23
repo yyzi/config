@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import commands
+import sys
+
+os.environ["HOME_OLD"]=os.environ["HOME"]
+
+code,pwd = commands.getstatusoutput('pwd')
+# 通过修改 HOME 环境变量来达到使用自定义 vimrc 以及 .vim 的目的
+os.environ["HOME"]='/etc/vim'
+cmd = "vim "
+i = 0
+
+for arg in sys.argv:
+    if i:
+        cmd = cmd + arg + " "
+    i=i+1
+
+os.system(cmd)
+
