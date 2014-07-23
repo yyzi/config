@@ -89,9 +89,7 @@
         let g:molokai_original = 1
         let g:rehash256 = 1
         colorscheme molokai
-
 "}}}
-
 
 " 脚本特性设置/编程设置（编辑与外观）--------------------------{{{
     autocmd BufNewFile *.sh,*.pl,*.py exec ":call SetTitle()"
@@ -130,7 +128,7 @@
             \ 'ctagsbin'  : 'gotags',
             \ 'ctagsargs' : '-sort -silent'
         \ }
-            
+
     " 设置控制字符显示样式
         "set listchars=tab:\¦\ ,nbsp:.,trail:.,extends:>,precedes:<
             set listchars=tab:\¦\ ,nbsp:.,trail:.,extends:>,precedes:<
@@ -144,8 +142,6 @@
             highlight MyGroupMA ctermbg=0 ctermfg=Red
             let m = matchadd("MyGroupMA", ' \+\ze$')
 "}}}
-
-
 
 " Plugin 管理 ----------------------------------------------------------{{{
     " plugin
@@ -161,21 +157,8 @@
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
 
-    " The following are examples of different formats supported.
-    " Keep Plugin commands between vundle#begin/end.
-    " plugin on GitHub repo
+    " git 操作
     Plugin 'tpope/vim-fugitive'
-    " plugin from http://vim-scripts.org/vim/scripts.html
-    Plugin 'L9'
-    " Git plugin not hosted on GitHub
-    "Plugin 'git://git.wincent.com/command-t.git'
-    " git repos on your local machine (i.e. when working on your own plugin)
-    " Plugin 'file:///home/gmarik/path/to/plugin'
-    " The sparkup vim script is in a subdirectory of this repo called vim.
-    " Pass the path to set the runtimepath properly.
-    Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-    " Avoid a name conflict with L9
-    " Plugin 'user/L9', {'name': 'newL9'}
 
     " markdown
     Plugin 'tpope/vim-markdown'
@@ -214,9 +197,6 @@
     "yaml
     Plugin 'avakhov/vim-yaml'
 
-    "wordpress
-    "Plugin 'dsawardekar/wordpress.vim'
-
     " taglist
     Plugin 'taglist.vim'
 
@@ -231,9 +211,6 @@
 
     " 智能注释
     Plugin 'tpope/vim-commentary'
-
-    " git diff
-    Plugin 'airblade/vim-gitgutter'
 
     " golang
         " go 自动补全
@@ -253,7 +230,7 @@
     Plugin 'kien/ctrlp.vim'
 
     " haproxy 配置文件语法高亮
-    Plugin 'ksauzz/haproxy.vim'  
+    Plugin 'ksauzz/haproxy.vim'
 
     " 代码片段插件
     Plugin 'msanders/snipmate.vim'
@@ -280,7 +257,6 @@
     " Put your non-Plugin stuff after this line
 "}}}
 
-
 " Plugin setting ----------------------------------------------------------{{{
 
     " vim-airline 配置
@@ -296,42 +272,40 @@
         "let g:airline#extensions#tabline#buffer_nr_show = 1
         " 显示时间
         let g:airline_section_b = '%{strftime("%y-%m-%d %H:%M:%S")}'
-    
+
     " tagbar 在左侧显示
         let g:tagbar_left = 1
-    
-    
-    
+
     " 文件树
         "打开/关闭 树状文件目录
         map <F2> :NERDTreeToggle<CR>
+
+        " F4 格式化文本, 现在仅仅是删除末尾空格, 以后还要添加的功能:
+        " 1. 如果空白行多余两行,那么删除掉多余的空行, 只保留一行
+        map <F4> :% s/\s\+$//g<CR>
+
         " 右侧显示文件树
         let NERDTreeWinPos="right"
-    
+
     "nmap <F3> :Tlist<CR>
     nmap <F3> :TagbarToggle<CR>
-    
+
     " 显示 git diff
-    nmap <F8> :GitGutterToggle<CR>
-    
-    " 默认不显示 git diff 当按 f8 以后才显示 diff 并且变更行高亮
-    let g:gitgutter_enabled=0
-    let g:gitgutter_highlight_lines=1
-    
-    
+    nmap <F8> :Gdiff<CR>
+
     " git diff 左侧侧边栏背景色
     highlight SignColumn ctermbg=233
-    
+
     " git diff change 行高亮
         highlight GitGutterAddLine      ctermbg=240 ctermfg=2
         highlight GitGutterDeleteLine   ctermbg=240 ctermfg=198
         highlight GitGutterChangeLine   ctermbg=240 ctermfg=11
         let g:gitgutter_eager=1
         let g:gitgutter_realtime=1
-    
+
     " supertab 自动补全的按键绑定
      let g:SuperTabDefaultCompletionType = "<c-n>"
-    
+
 "}}}
 
 " Functions ----------------------------------------------------------{{{
@@ -362,4 +336,6 @@
     endfunc
 "}}}
 
-
+" 改回 HOME 环境变量
+let $HOME=$HOME_OLD
+set path+=$PROJECT_SRC
