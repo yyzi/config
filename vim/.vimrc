@@ -336,6 +336,7 @@
     endfunc
 "}}}
 
+
 " 改回 HOME 环境变量
 let $HOME=$HOME_OLD
 set path+=$PROJECT_SRC
