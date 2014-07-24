@@ -271,7 +271,7 @@
         " tabline中buffer显示编号
         "let g:airline#extensions#tabline#buffer_nr_show = 1
         " 显示时间
-        let g:airline_section_b = '%{strftime("%y-%m-%d %H:%M:%S")}'
+        "let g:airline_section_b = '%{strftime("%y-%m-%d %H:%M:%S")}'
 
     " tagbar 在左侧显示
         let g:tagbar_left = 1
@@ -336,7 +336,6 @@
     endfunc
 "}}}
 
-
-" 改回 HOME 环境变量
-let $HOME=$HOME_OLD
-set path+=$PROJECT_SRC
+" 在 go-app 中改回 HOME 环境变量
+ "let $HOME=$HOME_OLD
+ "set path+=$PROJECT_SRC
