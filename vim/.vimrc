@@ -130,6 +130,9 @@
       let g:molokai_original = 1
       let g:rehash256 = 1
       colorscheme molokai
+
+  " 0 跳至第一个非空字符处, 如果想要跳到第一个绝对字符可以使用 g0
+  map 0 ^
 "}}}
 
 " 脚本特性设置/编程设置（编辑与外观）--------------------------{{{
