@@ -1,0 +1,13 @@
+[core]
+	excludesfile = /root/.gitignore_global
+[push]
+	default = simple
+
+[credential]
+	helper = cache --timeout=3600
+[user]
+	name = yyzi
+	email = yingzi@jike.me
+#[user]
+#	name = 冬岛
+#	email = qiulin.nql@alibaba-inc.com
