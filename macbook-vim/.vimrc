@@ -43,25 +43,19 @@
 " 常规设置（编辑与外观）--------------------------{{{
 
   " 设置主体颜色
-      " mackbook 下注释掉这三行, 使用 colorsheme 主题
-      " let g:molokai_original = 1
-      " let g:rehash256 = 1
-      " colorscheme molokai
-
-      " mackbook 下使用此主题
+    " 设置下主题
       colorscheme solarized
 
   " 设置行高亮、颜色
-      " mackbook 下注释掉这行, linux 下开启这行
-      " set t_Co=256
+      set t_Co=256
 
       " 光标行高亮
       set cursorline
-      hi CursorLine   cterm=NONE ctermbg=darkgrey
-      "ctermfg=white
       " hi CursorLine cterm=none gui=none ctermbg=237 guibg=#3a3a3a
+      hi CursorLine cterm=none gui=none ctermbg=233 guibg=#3a3a3a
+
       " 注释的颜色
-      hi  Comment  ctermfg=darkgrey
+      " hi  Comment  ctermfg=darkgrey
 
   " 不兼容 vi, 为了使用新特性
   set nocompatible
@@ -132,7 +126,7 @@
 
   " 增量搜索模式 在搜索时，输入的词句的逐字符高亮
   set incsearch
-  hi Search term=standout ctermfg=0 ctermbg=3
+  hi Search term=standout ctermfg=grey ctermbg=darkgrey
 
   " 显示行号
   set number
@@ -186,18 +180,18 @@
           \ 'ctagsargs' : '-sort -silent'
       \ }
 
-  " 设置控制字符显示样式
-      "set listchars=tab:\¦\ ,nbsp:.,trail:.,extends:>,precedes:<
-          set listchars=tab:\¦\ ,nbsp:.,trail:.,extends:>,precedes:<
-          " 显示控制字符和空格
-          set list
-      " 设定行首tab为灰色
-          highlight LeaderTab ctermfg=darkgrey
-          " 匹配行首tab
-          match LeaderTab /^\t\+/
-      " 结尾的空格高亮提示, 因为一般都是多余的
-          highlight MyGroupMA ctermbg=0 ctermfg=Red
-          let m = matchadd("MyGroupMA", ' \+\ze$')
+  " " 设置控制字符显示样式
+  "        set listchars=tab:\¦\ ,nbsp:.,trail:.,extends:>,precedes:<
+  "         " 显示控制字符和空格
+  "         set list
+  "         " 设定行首tab为灰色
+  "         highlight LeaderTab ctermfg=darkgrey
+  "         " 匹配行首tab
+  "         match LeaderTab /^\t\+/
+
+  "     " 结尾的空格高亮提示, 因为一般都是多余的
+  "         highlight MyGroupMA ctermbg=0 ctermfg=Red
+  "         let m = matchadd("MyGroupMA", ' \+\ze$')
 "}}}
 
 " Plugin 管理 ----------------------------------------------------------{{{
@@ -309,6 +303,8 @@
 "}}}
 
 " Plugin setting ----------------------------------------------------------{{{
+  " Configure Line Number Coloring
+  highlight LineNr ctermfg=darkgrey ctermbg=none
   " vim-airline 配置
       " 默认显示状态栏
       set laststatus=2
