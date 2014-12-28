@@ -121,12 +121,14 @@
   "set encoding=chinese
   set fileencodings=utf-8,ucs-bom,utf-16le,gbk,big5,euc-jp
 
-  " 搜索关键字高亮
-  set hlsearch
+  " 搜索设置
+    " 搜索关键字高亮
+    set hlsearch
 
-  " 增量搜索模式 在搜索时，输入的词句的逐字符高亮
-  set incsearch
-  hi Search term=standout ctermfg=grey ctermbg=darkgrey
+    " 增量搜索模式 在搜索时，输入的词句的逐字符高亮
+    set incsearch
+    " 高亮颜色设置
+    " hi Search term=standout ctermfg=grey ctermbg=yellow
 
   " 显示行号
   set number
@@ -364,6 +366,4 @@ autocmd BufNewFile *.sh,*.pl,*.py exec ":call SetTitle()"
       highlight Pmenu ctermfg=white ctermbg=darkgrey
     " and PmenSel for selected item color
       " highlight PmenuSel ctermfg=<color> ctermbg=<color>
- " selected block color
-hi Visual ctermbg=darkgrey ctermfg=none
 
