@@ -264,11 +264,18 @@ function! s:extractModulesPaths(paths)"{{{
             if (strlen(main))
                 let module = {}
                 let module.name = moduleName
-                let mainDir = strpart(path, 0 , match(path, '[^/\\]\+$')) . matchstr(main, '[^/\\]\+$')
-                if (match(main, '\.js') < 0)
-                    let mainDir = mainDir . '.js'
+                let pathDir = strpart(path, 0, match(path, '[^/\\]\+$'))
+                let mainDir = strpart(main, 0, match(main, '[^/\\]\+$'))
+                let mainPath = simplify(pathDir . main)
+                if (match(mainPath, '\.js') < 0)
+                    let tryFile = simplify(mainPath . '.js')
+                    if (filereadable(tryFile))
+                        let mainPath = tryFile
+                    elseif (isdirectory(mainPath))
+                        let mainPath = simplify(mainPath . '/index.js')
+                    endif
                 endif
-                let module.data = s:extractModuleDataAtPath(mainDir)
+                let module.data = s:extractModuleDataAtPath(mainPath)
                 for spath in a:paths
                     if (spath =~ main)
                         call remove(a:paths, index(a:paths, spath))
@@ -300,8 +307,11 @@ function! s:extractModulesPaths(paths)"{{{
 endfunction"}}}
 
 function! s:extractModuleDataAtPath(module_path)"{{{
-    let fileLines = readfile(a:module_path)
     let matched = []
+    if (!filereadable(a:module_path))
+        return matched
+    endif
+    let fileLines = readfile(a:module_path)
     for line in fileLines
         let index = match(line, 'exports\.')
         if (index > -1 && match(line, '=') > index)

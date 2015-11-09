@@ -40,11 +40,14 @@
   endfunc
 
 "}}}
+
 " 常规设置（编辑与外观）--------------------------{{{
 
   " 设置主体颜色
     " 设置下主题
-      colorscheme solarized
+    syntax enable
+    "set background=dark
+    colorscheme solarized
 
   " 设置行高亮、颜色
       set t_Co=256
@@ -122,13 +125,13 @@
   set fileencodings=utf-8,ucs-bom,utf-16le,gbk,big5,euc-jp
 
   " 搜索设置
-    " 搜索关键字高亮
-    set hlsearch
+   " 搜索关键字高亮
+   set hlsearch
 
-    " 增量搜索模式 在搜索时，输入的词句的逐字符高亮
-    set incsearch
-    " 高亮颜色设置
-    " hi Search term=standout ctermfg=grey ctermbg=yellow
+   " 增量搜索模式 在搜索时，输入的词句的逐字符高亮
+   set incsearch
+   " 高亮颜色设置
+   " hi Search term=standout ctermfg=grey ctermbg=yellow
 
   " 显示行号
   set number
@@ -136,7 +139,7 @@
   setlocal foldlevel=1
 
   " 粘贴时不替换剪切板内容
-      xnoremap p pgvy
+  xnoremap p pgvy
 
   " 0 跳至第一个非空字符处, 如果想要跳到第一个绝对字符可以使用 g0
   map 0 ^
@@ -220,6 +223,9 @@
   "Plugin 'pangloss/vim-javascript'
   Plugin 'lukaszb/vim-web-indent'
 
+  " angular snipmate
+  Plugin 'burnettk/vim-angular'
+
   "nodejs
   Plugin 'ahayman/vim-nodejs-complete'
 
@@ -261,19 +267,14 @@
   " tagbar  侧边栏
   Plugin 'majutsushi/tagbar'
 
-  " vim-airline  只能状态栏
+  " vim-airline  智能状态栏
   Plugin 'bling/vim-airline'
 
   " 智能注释
   Plugin 'tpope/vim-commentary'
 
   " golang
-      " go 自动补全
-      " Plugin 'ervandew/supertab'
-      " 代码高亮
-      Plugin 'jnwhiteh/vim-golang'
-      Plugin 'nsf/gocode', {'rtp': 'vim/'}
-
+  Plugin 'fatih/vim-go'
 
   " 在文件中搜索
   Plugin 'mileszs/ack.vim'
@@ -285,19 +286,25 @@
   Plugin 'kien/ctrlp.vim'
 
   " haproxy 配置文件语法高亮
-  Plugin 'ksauzz/haproxy.vim'
+  " Plugin 'ksauzz/haproxy.vim'
 
   " 代码片段插件
-  Plugin 'msanders/snipmate.vim'
+  Plugin 'MarcWeber/vim-addon-mw-utils'
+  Plugin 'tomtom/tlib_vim'
+  Plugin 'garbas/vim-snipmate'
+
 
   " Nginx 配置文件高亮
-  Plugin 'nginx.vim'
+  " Plugin 'nginx.vim'
 
   " salt 语法高亮
-  Plugin 'saltstack/salt-vim'
+  " Plugin 'saltstack/salt-vim'
 
   " 自动对齐插件: 逗号对齐  冒号对齐    等号对齐等功能
   Plugin 'godlygeek/tabular'
+
+  " java velocity 模板语法高亮
+  " Plugin 'lepture/vim-velocity'
 
   " All of your Plugins must be added before the following line
   call vundle#end()            " required
@@ -348,10 +355,6 @@
       highlight GitGutterChangeLine   ctermbg=240 ctermfg=11
       let g:gitgutter_eager=1
       let g:gitgutter_realtime=1
-
-  " supertab 自动补全的按键绑定
-   let g:SuperTabDefaultCompletionType = "<c-n>"
-
 "}}}
 
 " 不知道为什么, 需要在加载完了 Plugin 只能才能设置这个, 暂时放在这里了
@@ -363,7 +366,24 @@ autocmd BufNewFile *.sh,*.pl,*.py exec ":call SetTitle()"
  "set path+=$PROJECT_SRC
  " 自动补全配色
     "Pmenu for menu colors
-      highlight Pmenu ctermfg=white ctermbg=darkgrey
+    "  highlight Pmenu ctermfg=white ctermbg=darkgrey
     " and PmenSel for selected item color
       " highlight PmenuSel ctermfg=<color> ctermbg=<color>
+
+" 设置行和列高亮
+set cursorline
+set cursorcolumn
+
+" 代码折叠
+set foldmethod=syntax
+set nofoldenable
+
+" 剪切板
+ " 复制到剪切板
+ map "+y :w !pbcopy<CR><CR>
+ " 从剪切板粘贴
+ map "+p :r !pbpaste<CR><CR>
+
+ " 自动识别文件类型比如: 在文件中使用备注标示 vim: ft=yaml 就表示这是一个 yaml 文件
+ filetype plugin indent on
 
